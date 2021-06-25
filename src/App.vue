@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <carousel
+      :autoPlay="true"
+      :initial="0"
+      :hasDot="true"
+      :duration="3000"
+      :hasDirector="true"
+    >
+      <car-item v-for="(item, index) in CarData" :key="index">
+        <img :src="require(`./assets/img/${item.img_name}`)" alt="" />
+      </car-item>
+    </carousel>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import CarData from "./data/Carousel";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: {},
+  setup() {
+    return {
+      CarData,
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.container {
+  width: 520px;
+  height: 280px;
+  margin: 150px auto;
 }
 </style>
